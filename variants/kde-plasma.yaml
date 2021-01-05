@@ -31,7 +31,13 @@ actions:
       - systemsettings
       - xserver-xorg
       - xserver-xorg-input-evdev
-      - codi
+      - codi-app
+      - kde-spectacle
+      - bluetooth
+      - rfkill
+      - bluedevil
+      - bluez-tools
+      - pulseaudio-module-bluetooth
 
   - action: run
     chroot: true

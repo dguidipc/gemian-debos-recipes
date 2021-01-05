@@ -15,7 +15,7 @@ actions:
 
   - action: apt
     description: Installing additional Debian packages
-    packages: [ curl, gnupg, net-tools, openssh-server, sudo ]
+    packages: [ curl, gnupg, net-tools, openssh-server, sudo, avahi-daemon ]
 
   - action: run
     chroot: true
@@ -43,6 +43,10 @@ actions:
       - xkb-data
       - xserver-xorg-video-hwcomposer
       - xss-lock
+      - bash-completion
+      - gemian-system
+      - lxc-android
+      - locales
 
   - action: run
     chroot: true
@@ -63,3 +67,8 @@ actions:
     chroot: true
     description: Setting Gemian users
     script: scripts/setup-user.sh
+
+  - action: run
+    chroot: true
+    description: Removing /var/log/journal to avoid persisant journaling
+    command: rm -rf /var/log/journal/
