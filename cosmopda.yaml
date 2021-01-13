@@ -1,4 +1,4 @@
-{{- $image := or .image "gemian-cosmopda.tgz" -}}
+{{- $image := or .image "gemian-cosmocom.tgz" -}}
 {{- $output := or .output "tarball" -}}
 {{- $variant := or .variant "mate" -}}
 
@@ -20,7 +20,12 @@ actions:
 
   - action: apt
     description: Installing Cosmo Communicator-specific packages
-    packages: [ bluebinder ]
+    target-device: mt6771
+    packages:
+      - bluebinder
+      - media-hub
+      - gemian-system
+      - lxc-android
 
   - action: run
     description: Generate /usr/share/kernel/linux-boot.img for Cosmo Communicator
@@ -84,7 +89,8 @@ actions:
 {{ if eq $output "image" }}
   - action: image-file
     imagename: {{ $image }}
-    imagesize: 3221225472
+    imagesize: 6000000000
+
     fs: ext4
     fsname: "gemian"
 
