@@ -104,7 +104,7 @@ actions:
 
   - action: run
     description: Allow jenkins user to access file
-    command: chmod a+rw {{ $image }}
+    command: chown jenkins.jenkins {{ $image }}
 
   - action: filesystem-deploy
     setup-fstab: false
